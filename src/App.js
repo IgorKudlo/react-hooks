@@ -1,7 +1,15 @@
 import React, {useState} from "react";
 
+function computeInitCounter() {
+    console.log('Some calculation ...');
+    return Math.trunc(Math.random() * 20);
+}
+
 function App() {
-    const [counter, setCounter] = useState(0);
+    //const [counter, setCounter] = useState(0);
+    const [counter, setCounter] = useState(() => {
+        return computeInitCounter();
+    })
 
     function increment() {
         setCounter((prevCounter) => {
