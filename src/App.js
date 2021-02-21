@@ -8,7 +8,11 @@ function App() {
       fetch(`https://jsonplaceholder.typicode.com/${type}`)
         .then(response => response.json())
         .then(json => setData(json))
-    }, [type])
+    }, [type]);
+
+    useEffect(() => {
+      console.log('ComponentDidMount')
+    }, []);
 
     return (
         <div>
