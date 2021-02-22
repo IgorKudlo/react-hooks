@@ -1,4 +1,4 @@
-import React, {useState, useMemo} from "react";
+import React, {useState, useMemo, useEffect} from "react";
 
 function complexComputed(num) {
     console.log('complexComputed')
@@ -11,13 +11,19 @@ function App() {
     const [number, setNumber] = useState(42);
     const [colored, setColored] = useState(false);
 
-    const styles = {
-        color: colored ? 'darkred' : 'black'
-    }
+    const styles = useMemo(() => {
+        return {
+            color: colored ? 'darkred' : 'black'
+        }
+    }, [colored]);
 
     const computed = useMemo(() => {
         return complexComputed(number)
     }, [number]);
+
+    useEffect(() => {
+        console.log('Styles changed')
+    }, [styles]);
 
     return (
         <>
